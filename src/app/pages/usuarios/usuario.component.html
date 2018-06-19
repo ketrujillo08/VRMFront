@@ -1,0 +1,94 @@
+<section class="main-container">
+    <div class="container-fluid">
+        <div class="page-header filled full-block light">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h2>Usuario</h2>
+                    <p>Modificaciones de Usuario</p>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <app-breadcrumbs></app-breadcrumbs>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="widget-wrap">
+                    <div class="widget-header block-header clearfix">
+                        <div>
+                            <h3>{{usuario.nombre}}</h3>
+                        </div>
+                        <div class="pull-right w-action">
+                            <ul class="widget-action-bar">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a [routerLink]="['/usuario','nuevo']"><i class="zmdi zmdi-account-add"></i></a></li>
+                                        <li *ngIf="usuario._id"><a (click)="eliminarUsuario(usuario._id);"><i class="zmdi zmdi-delete"></i></a></li>
+                                        <li class="widget-reload"><a [routerLink]="['/usuario',usuario._id]"><i class="zmdi zmdi-refresh-alt"></i></a></li>
+                                        <li class="widget-exit"><a [routerLink]="['/usuarios']"><i class="zmdi zmdi-long-arrow-return"></i></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="widget-container">
+                        <div class="widget-content">
+                            <form #f="ngForm" class="form-horizontal material-form" (ngSubmit)="guardarUsuario(f);" ngNativeValidate>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nombre:</label>
+                                    <div class=" col-md-8">
+                                        <input type="text" class="form-control" placeholder="Ingrese su nombre" name="nombre" [(ngModel)]="usuario.nombre" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Apellido:</label>
+                                    <div class=" col-md-8">
+                                        <input type="text" class="form-control" placeholder="Ingrese su Apellido" name="apellido" [(ngModel)]="usuario.apellido" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Correo:</label>
+                                    <div class=" col-md-8">
+                                        <input type="text" class="form-control" placeholder="Ingrese su correo" name="correo" required [(ngModel)]="usuario.correo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Rol:</label>
+                                    <div class=" col-md-8">
+                                        <select class="form-control" name="rol" required [(ngModel)]="usuario.rol">
+                                          <option value="Cliente">Cliente</option>
+                                          <option value="Auxiliar">Auxiliar</option>
+                                          <option value="Supervisor">Supervisor</option>
+                                          <option value="Gerente">Gerente</option>
+                                          <option value="ADMIN">ADMIN</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Empresa:</label>
+                                    <div class=" col-md-8">
+                                        <select class="form-control" name="empresa" [(ngModel)]="usuario.empresa" required>
+                                          <option *ngFor="let empresa of empresas" value="{{empresa._id}}">{{empresa.nombre}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">&nbsp;</label>
+                                    <div class="col-md-8">
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

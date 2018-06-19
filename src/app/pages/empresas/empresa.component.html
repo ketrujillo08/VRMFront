@@ -1,0 +1,71 @@
+<section class="main-container">
+    <div class="container-fluid">
+        <div class="page-header filled full-block light">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h2>Empresa</h2>
+                    <p>Modificaciones de Empresa</p>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <app-breadcrumbs></app-breadcrumbs>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="widget-wrap">
+                    <div class="widget-header block-header clearfix">
+                        <div>
+                            <h3>{{empresa.nombre}}</h3>
+                        </div>
+                        <div class="pull-right w-action">
+                            <ul class="widget-action-bar">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a [routerLink]="['/empresa','nuevo']"><i class="zmdi zmdi-account-add"></i></a></li>
+                                        <li *ngIf="empresa._id"><a (click)="eliminarEmpresa(empresa._id);"><i class="zmdi zmdi-delete"></i></a></li>
+                                        <li class="widget-reload"><a [routerLink]="['/empresa',empresa._id]"><i class="zmdi zmdi-refresh-alt"></i></a></li>
+                                        <li class="widget-exit"><a [routerLink]="['/empresas']"><i class="zmdi zmdi-long-arrow-return"></i></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="widget-container">
+                        <div class="widget-content">
+                            <form #f="ngForm" class="form-horizontal material-form" (ngSubmit)="guardarEmpresa(f);" ngNativeValidate>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nombre:</label>
+                                    <div class=" col-md-8">
+                                        <input type="text" class="form-control" placeholder="Ingrese su nombre" name="nombre" [(ngModel)]="empresa.nombre" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Activo:</label>
+                                    <div class=" col-md-8">
+                                        <label class="radio-toggle">
+                                            <input class="switch-sm" type="checkbox" name="radio-toggle" [(ngModel)]="empresa.activo">
+                                            <i></i>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">&nbsp;</label>
+                                    <div class="col-md-8">
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

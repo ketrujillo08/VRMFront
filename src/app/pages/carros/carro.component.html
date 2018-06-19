@@ -1,0 +1,98 @@
+<section class="main-container">
+    <div class="container-fluid">
+        <div class="page-header filled full-block light">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h2>Empresa</h2>
+                    <p>Modificaciones de Empresa</p>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <app-breadcrumbs></app-breadcrumbs>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="widget-wrap">
+                    <div class="widget-header block-header clearfix">
+                        <div>
+                            <h3>{{carro.modelo}}</h3>
+                        </div>
+                        <div class="pull-right w-action">
+                            <ul class="widget-action-bar">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a [routerLink]="['/carro','nuevo']"><i class="zmdi zmdi-account-add"></i></a></li>
+                                        <li *ngIf="carro._id"><a (click)="eliminarCarro(carro._id);"><i class="zmdi zmdi-delete"></i></a></li>
+                                        <li class="widget-reload"><a [routerLink]="['/carro',carro._id]"><i class="zmdi zmdi-refresh-alt"></i></a></li>
+                                        <li class="widget-exit"><a [routerLink]="['/carros']"><i class="zmdi zmdi-long-arrow-return"></i></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="widget-container">
+                        <div class="widget-content">
+                            <form #f="ngForm" class="form-horizontal material-form" (ngSubmit)="guardarCarro(f);" ngNativeValidate>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Modelo:</label>
+                                    <div class=" col-md-8">
+                                        <input type="text" class="form-control" placeholder="Ingrese su nombre" name="nombre" [(ngModel)]="carro.modelo" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Año:</label>
+                                    <div class=" col-md-8">
+                                        <input type="number" class="form-control" placeholder="Ingrese su año" name="anio" [(ngModel)]="carro.anio" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Color:</label>
+                                    <div class=" col-md-8">
+                                        <input type="text" class="form-control" placeholder="Ingrese el color" name="color" [(ngModel)]="carro.color" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Placas:</label>
+                                    <div class=" col-md-8">
+                                        <input type="text" class="form-control" placeholder="Ingrese las placas" name="placas" [(ngModel)]="carro.placas" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Comentarios:</label>
+                                    <div class=" col-md-8">
+                                        <textarea class="form-control" name="comentarios" [(ngModel)]="carro.comentarios" rows="4">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Cliente:</label>
+                                    <div class=" col-md-8">
+                                        <select (change)="cambiarUsuario($event.target.value);" class="form-control" name="usuario" [(ngModel)]="carro.usuario">
+                                          
+                                          <option *ngFor="let usuario of usuarios" [value]="usuario._id">{{usuario.nombre}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">&nbsp;</label>
+                                    <div class="col-md-8">
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

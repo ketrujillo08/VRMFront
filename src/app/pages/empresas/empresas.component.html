@@ -1,0 +1,53 @@
+<!--Page Container Start Here-->
+<section class="main-container">
+    <div class="container-fluid">
+        <div class="page-header filled full-block light">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h2>Empresas</h2>
+                    <p>Listado de empresas</p>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <app-breadcrumbs></app-breadcrumbs>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget-wrap">
+                    <div class="widget-header block-header clearfix">
+                        <h3>Responsive data tables</h3>
+                        <a [routerLink]="['/empresa','nuevo']" class="btn btn-primary float-right">Añadir Empresa</a>
+                    </div>
+                    <div class="widget-container">
+                        <div class="widget-content">
+                            <table class="table data-tbl">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Fecha</th>
+                                        <th>Activo</th>
+                                        <th>Acción</th>
+
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Fecha</th>
+                                        <th>Activo</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</section>

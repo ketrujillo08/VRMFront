@@ -1,3 +1,68 @@
-<p>
-  lavados works!
-</p>
+<!--Page Container Start Here-->
+<section class="main-container">
+    <div class="container-fluid">
+        <div class="page-header filled full-block light">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h2>Reporte de Servicios</h2>
+                    <p>Listado de servicio</p>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <app-breadcrumbs></app-breadcrumbs>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget-wrap">
+                    <div class="widget-header block-header clearfix">
+                        <h3>Servicios</h3>
+                        <a [routerLink]="['/lavado','nuevo']" class="btn btn-primary float-right">Añadir Lavado</a>
+                        <div class="col-md-4 float-right">
+                            <a class="btn btn-primary float-left" (click)="mostrarFecha(miFecha);">Buscar</a>
+                        </div>
+                        <div class="col-md-4 float-right">
+                            <input #miFecha class="form-control" autocomplete="off" name="fecha" type="text" id="date-icon" placeholder="Fecha de Reservación" required>
+                        </div>
+
+                    </div>
+                    <div class="widget-container">
+                        <div class="widget-content">
+                            <table class="table data-tbl">
+                                <thead>
+                                    <tr>
+                                        <th>Carro</th>
+                                        <th>Cliente</th>
+                                        <th>Empresa</th>
+                                        <th>Estado</th>
+                                        <th>Servicio</th>
+                                        <th>Hora</th>
+                                        <th>Lavador</th>
+                                        <th>Acción</th>
+
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Carro</th>
+                                        <th>Cliente</th>
+                                        <th>Empresa</th>
+                                        <th>Estado</th>
+                                        <th>Servicio</th>
+                                        <th>Hora</th>
+                                        <th>Lavador</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</section>

@@ -35,22 +35,93 @@
                     </div>
                     <div class="widget-container">
                         <div class="widget-content">
-                            <form #f="ngForm" class="form-horizontal material-form" (ngSubmit)="guardarLavado(f);" ngNativeValidate>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Estado:</label>
-                                    <div class=" col-md-8">
-                                        <select class="form-control" id="list-autocomplete" name="usuario" [(ngModel)]="lavado.cliente">
-                                          <option [ngValue]="null">Seleccione al cliente</option>
-                                          <option *ngFor="let cliente of clientes" [value]="cliente._id">{{cliente.nombre+" "+cliente.apellido}}</option>
-
-                                        </select>
+                            <form #f="ngForm" class="j-forms" (ngSubmit)="guardarLavado(f);" ngNativeValidate>
+                                <div class="form-content">
+                                    <div class="row">
+                                        <label class="col-md-3 control-label">Cliente:</label>
+                                        <div class=" col-md-9 unit">
+                                            <select class="form-control" name="cliente" [(ngModel)]="lavado.cliente" (change)="getVehiculos($event);" required>
+                                            <option [ngValue]="">Seleccione al cliente</option>
+                                            <option *ngFor="let cliente of clientes" [value]="cliente._id">{{cliente.nombre+" "+cliente.apellido}}</option>
+                                          </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">&nbsp;</label>
-                                    <div class="col-md-8">
-                                        <div class="form-actions">
-                                            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+                                    <div class="row" *ngIf="carros.length > 0">
+                                        <label class="col-md-3 control-label">Carro:</label>
+                                        <div class=" col-md-9 unit">
+                                            <select class="form-control" name="carro" [(ngModel)]="lavado.carro" required>
+                                            <option [ngValue]="null">Seleccione el vehículo</option>
+                                          <option *ngFor="let carro of carros" [value]="carro._id">{{carro.modelo+" "+carro.anio}}</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="tiposServicios.length > 0">
+                                        <label class="col-md-3 control-label">Tipo de Servicio:</label>
+                                        <div class=" col-md-9 unit">
+                                            <select class="form-control" name="servicio" [(ngModel)]="lavado.servicio" required>
+                                            <option [ngValue]="null">Seleccione el servicio</option>
+                                          <option *ngFor="let tipoServicio of tiposServicios" [value]="tipoServicio._id">{{tipoServicio.servicio}}</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="j-row">
+                                        <div class="span12 unit">
+                                            <div class="input">
+                                                <label class="icon-right" for="date-icon">
+                                                <i class="fa fa-calendar"></i>
+                                            </label>
+                                                <input [(ngModel)]="lavado.hora" class="form-control" name="hora" type="text" id="date-icon" placeholder="Fecha de Reservación" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="estados.length > 0">
+                                        <label class="col-md-3 control-label">Estado de Servicio:</label>
+                                        <div class=" col-md-9 unit">
+                                            <select class="form-control" name="estado" [(ngModel)]="lavado.estado" required>
+                                                <option [ngValue]="null">Seleccione el servicio</option>
+                                                <option *ngFor="let estado of estados" [value]="estado._id">{{estado.estado}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="lavadores.length > 0">
+                                        <label class="col-md-3 control-label">Lavador:</label>
+                                        <div class=" col-md-9 unit">
+                                            <select class="form-control" name="lavador" [(ngModel)]="lavado.lavador" required>
+                                                <option [ngValue]="">Seleccione al cliente</option>
+                                                <option *ngFor="let lavador of lavadores" [value]="lavador._id">{{lavador.nombre+" "+lavador.apellido}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3 control-label">Seguro de Lluvia:</label>
+                                        <div class="col-md-9 unit">
+                                            <input class="switch-sm" type="checkbox" [(ngModel)]="lavado.lluvia" name="lluvia">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3 control-label">Aromatizante</label>
+                                        <div class="col-md-9 unit">
+                                            <input class="switch-sm" type="checkbox" [(ngModel)]="lavado.aroma" name="aroma">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3 control-label">Tapete</label>
+                                        <div class="col-md-9 unit">
+                                            <input class="switch-sm" type="checkbox" [(ngModel)]="lavado.tapete" name="tapete">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3 control-label">Precio del Servicio:</label>
+                                        <div class=" col-md-9 unit">
+                                            <input type="number" class="form-control" name="precio" [(ngModel)]="lavado.precio" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">&nbsp;</label>
+                                        <div class="col-md-8">
+                                            <div class="form-actions">
+                                                <button type="submit" class="btn btn-primary float-right">Guardar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

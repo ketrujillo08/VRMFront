@@ -76,6 +76,14 @@ export class UsuarioService {
       throw e;
     });
   }
+  getCarrosCliente(id:string){
+    let url = URL_SERVICIOS + '/carro/?cliente=' + id;
+    return this._http.get(url)
+    .catch((e)=>{
+      swal('error',e.error.mensaje,'error');
+      throw e;
+    }); 
+  }
   guardarUsuario(usuario:Usuario){
     let url = URL_SERVICIOS + '/usuario/';
     if(usuario._id){
